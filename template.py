@@ -9,7 +9,7 @@ import pandas
 X_train = []
 y_train = []
 
-# Good starting valyes are timestep = 60, epochs = 80, batch_size = 50
+# Good starting values are timestep = 60, epochs = 80, batch_size = 50
 timestep = 1
 epochs = 1
 batch_size = 1
