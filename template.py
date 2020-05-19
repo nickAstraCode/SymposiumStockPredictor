@@ -33,7 +33,8 @@ def modelBuilder(model):
                    input_shape=(X_train.shape[1], 1)))
 
     model.add(LSTM(units=48, return_sequences=True))
-    model.add(LSTM(units=64, return_sequences=True))
+    model.add(LSTM(units=56, return_sequences=True))
+    model.add(LSTM(units=60))
     model.add(LSTM(units=64))
     model.add(Dense(units=1))
 
