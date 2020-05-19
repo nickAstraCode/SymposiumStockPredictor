@@ -47,7 +47,7 @@ modelBuilder(mod)
 dataset_test = pandas.read_csv('testData.csv')
 real_stock_price = dataset_test.iloc[:, 1:2].values
 
-# Getting the predicted stock price of 2017
+# Getting the predicted stock price 
 dataset_total = pandas.concat(
     (dataset_train['Open'], dataset_test['Open']), axis=0)
 val = dataset_total[len(dataset_total) -
