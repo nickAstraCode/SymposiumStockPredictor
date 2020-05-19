@@ -9,14 +9,17 @@ import pandas
 X_train = []
 y_train = []
 
+# Customizable Parameters 
 # Good starting values are timestep = 60, epochs = 80, batch_size = 50
 timestep = 1
 epochs = 1
 batch_size = 1
 
+# Getting Data
 dataset_train = pandas.read_csv('trainData.csv')
 trainset = dataset_train.iloc[:, 1:2].values
 
+# Scaling data down 
 sc = MinMaxScaler(feature_range=(0, 1))
 setScaled = sc.fit_transform(trainset)
 
@@ -27,18 +30,31 @@ X_train, y_train = numpy.array(X_train), numpy.array(y_train)
 
 X_train = numpy.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))
 
-
+# Building Models
 def modelBuilder(model):
     model.add(LSTM(units=32, return_sequences=True,
                    input_shape=(X_train.shape[1], 1)))
 
     model.add(LSTM(units=48, return_sequences=True))
     model.add(LSTM(units=56, return_sequences=True))
-    model.add(LSTM(units=60))
+    model.add(LSTM(units=60, return_sequences=True))
     model.add(LSTM(units=64))
     model.add(Dense(units=1))
 
     model.compile(optimizer='rmsprop', loss='mean_squared_error')
+    model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size)
+    
+def anotherBuilder(model):
+    model.add(LSTM(units=32, return_sequences=True,
+                   input_shape=(X_train.shape[1], 1)))
+
+    model.add(LSTM(units=50, return_sequences=True))
+    model.add(LSTM(units=50, return_sequences=True))
+    model.add(LSTM(units=50, return_sequences=True))
+    model.add(LSTM(units=50))
+    model.add(Dense(units=1))
+
+    model.compile(optimizer='adam', loss='mean_squared_error')
     model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size)
 
 
