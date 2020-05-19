@@ -63,8 +63,8 @@ X_test = numpy.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
 predicted_stock_price = mod.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
-# Visualising the results
-mpt.plot(real_stock_price, color=(0, 0.9, 0.1), label='Real Stock Price')
+# Graphing the results
+mpt.plot(real_stock_price, color=(0, 0.9, 0.1), label='Stock Price')
 mpt.plot(predicted_stock_price, color=(0, 0.6, 0.8),
          label='Predicted Stock Price')
 mpt.title('Predicted Price')
